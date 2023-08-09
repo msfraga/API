@@ -1,6 +1,8 @@
-from rest_framework import serializers
-from escola.models import Aluno, Curso, Carro
+from rest_framework import serializers, status
+from rest_framework.response import Response
 
+from escola.models import Aluno, Curso, Carro
+from django.shortcuts import render, redirect
 
 # Aqui, estamos definindo a classe AlunoSerializer
 # Ela herda da classe serializers.ModelSerializer, que é uma classe de serializador do DRF usada para serializar
@@ -18,6 +20,8 @@ class AlunoSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+
+
 class CursoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Curso
@@ -28,6 +32,7 @@ class CarroSerializer(serializers.ModelSerializer):
     class Meta:
         model = Carro
         fields = '__all__'
+
 
 # Esses serializadores nos permitem converter objetos do Django (instâncias de Aluno e Curso) em JSON ou outros formatos
 # compatíveis com a API REST. Isso é útil ao expor dados através de uma API, pois nos permite controlar quais campos dos

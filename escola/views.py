@@ -1,6 +1,9 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
+from rest_framework.response import Response
+
 from escola.models import Aluno, Curso, Carro
 from escola.serializer import AlunoSerializer, CursoSerializer, CarroSerializer
+
 
 # estamos criando duas classes de ViewSets usando o Django Rest Framework (DRF) para expor os modelos Aluno e Curso
 # como uma API RESTful
@@ -22,6 +25,13 @@ class AlunosViewSet(viewsets.ModelViewSet):
     # O atributo serializer_class define o serializador que será usado para converter os objetos Aluno em JSON ou outros
     # formatos quando estiverem sendo retornados pela API. Aqui, estamos usando o AlunoSerializer para esse propósito.
 
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            print("aluno salvo")
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class CursosViewSet(viewsets.ModelViewSet):
     """Exibindo todos os cursos"""
@@ -33,6 +43,7 @@ class CarroViewSet(viewsets.ModelViewSet):
     """Exibindo todos os cursos"""
     queryset = Carro.objects.all()
     serializer_class = CarroSerializer
+
 
 
 # Com essas ViewSets, a API REST terá duas rotas para os modelos Aluno e Curso, com as ações CRUD devidamente

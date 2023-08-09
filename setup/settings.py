@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-rmfc)3n9y3f(cxs-j7@x9=0!eby3&@d-y-7w2&k6_2qp1xy_9r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['99c6-187-106-26-145.ngrok-free.app', '127.0.0.1', ' https://ed8b-187-106-26-145.ngrok-free.app', 'ed8b-187-106-26-145.ngrok-free.app', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -131,3 +131,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_METHODS = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS']
 
 CORS_ALLOW_HEADERS = ['Content-Type', 'Authorization']
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+    # Adicione outras origens permitidas, se necessário
+]
