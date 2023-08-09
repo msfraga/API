@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 # path = é usada para definir URLs
 # include =  é usada para incluir outras configurações de URLs de outros arquivos na configuração principal
-from escola.views import AlunosViewSet, CursosViewSet, CarroViewSet
+from escola.views import AlunosViewSet, CursosViewSet, CarroViewSet, ProjetoViewSet
 # Esses ViewSets são responsáveis por manipular as operações CRUD para os modelos
 from rest_framework import routers
 
@@ -16,6 +16,7 @@ router.register('alunos', AlunosViewSet, basename='Alunos')
 # Portanto, as URLs geradas para o ViewSet AlunosViewSet serão algo como /alunos/, /alunos/<pk>/, etc.
 router.register('cursos', CursosViewSet, basename='Cursos')
 router.register('carros', CarroViewSet, basename='Carros')
+router.register('projetos', ProjetoViewSet, basename='Projetos')
 
 # Essas urlpatterns são usadas para mapear URLs a funções ou ViewSets
 urlpatterns = [

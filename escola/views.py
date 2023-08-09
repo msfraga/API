@@ -1,8 +1,8 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 
-from escola.models import Aluno, Curso, Carro
-from escola.serializer import AlunoSerializer, CursoSerializer, CarroSerializer
+from escola.models import Aluno, Curso, Carro, Projeto
+from escola.serializer import AlunoSerializer, CursoSerializer, CarroSerializer, ProjetoSerializer
 
 
 # estamos criando duas classes de ViewSets usando o Django Rest Framework (DRF) para expor os modelos Aluno e Curso
@@ -45,7 +45,9 @@ class CarroViewSet(viewsets.ModelViewSet):
     serializer_class = CarroSerializer
 
 
-
+class ProjetoViewSet(viewsets.ModelViewSet):
+    queryset = Projeto.objects.all()
+    serializer_class = ProjetoSerializer
 # Com essas ViewSets, a API REST terá duas rotas para os modelos Aluno e Curso, com as ações CRUD devidamente
 # configuradas e utilizando os serializadores AlunoSerializer e CursoSerializer para formatar os dados.
 # Essas ViewSets tornam a criação de uma API para esses modelos simples e eficiente usando o Django Rest Framework.

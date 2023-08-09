@@ -32,3 +32,13 @@ class Carro(models.Model):
 
     def __str__(self):
         return self.marca
+
+
+class Projeto(models.Model):
+    nome = models.CharField(max_length=15, null=False)
+    departamento = models.CharField(max_length=15, null=False)
+    inicio = models.DateField()
+    fim = models.DateField()
+
+    def __str__(self):
+        return self.nome
