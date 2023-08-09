@@ -20,7 +20,7 @@ class Curso(models.Model):
     codigo_curso = models.CharField(max_length=10)
     descricao = models.CharField(max_length=100)
     nivel = models.CharField(max_length=1, choices=NIVEL, blank=False, null=False, default='B')
-
+    ##
     def __str__(self):
         return self.descricao
 
@@ -29,7 +29,7 @@ class Carro(models.Model):
     marca = models.CharField(max_length=15, null=False)
     ano = models.DateField()
     cor = models.CharField(max_length=15, null=True)
-
+    ##
     def __str__(self):
         return self.marca
 
